@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+        {% if title %}
+         <title>{{ title }} - Microblog</title>
+         {% else %}
+         <title>Welcome to Microblog!</title>
+         {% endif %}
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a href="{{ url_for('index') }}">index</a>
+      <a href="{{ url_for('login') }}">login</a>
+    </div>
+
+<!-- Flashed Messages -->
+    <div class="">
+
+      <hr>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+        {%for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+
+    </div>
+
+<!-- Actual Content -->
+    <div class="">
+      {% block body %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>
