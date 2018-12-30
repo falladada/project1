@@ -13,7 +13,11 @@
     <!-- NAVBAR -->
     <div class="navbar">
       <a href="{{ url_for('index') }}">index</a>
+      {% if current_user.is_anonymous %}
       <a href="{{ url_for('login') }}">login</a>
+      {% else %}
+      <a href="{{url_for('logout') }}">logout</a>
+      {% endif %}
     </div>
 
 <!-- Flashed Messages -->
